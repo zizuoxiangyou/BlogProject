@@ -1,0 +1,58 @@
+body {
+    background-image: url("../image/login.png");
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+.whole_page {
+    background-color: rgb(168, 218, 238);
+    padding: 50px;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px;
+    width: 400px;
+}
+
+h2 {
+    text-align: center;
+    margin-bottom: 10px;
+    font-family: "Lucida Handwriting";
+    font-size: 50px;
+}
+
+.form_input {
+     display: block;
+    width: 70%;
+    padding: 10px;
+    margin: 10px auto;
+    border: 1px solid;
+    border-radius: 5px;
+    text-align: center;
+         background-color: black;
+     color: white;
+}
+
+button {
+    display: block;
+    width: 70%;
+    padding: 10px;
+    background-color: black;
+    margin:20px auto;
+    color: white;
+    font-size: 15px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.register_link {
+    text-align: center;
+    margin-top: 12px;
+    font-size: 14px;
+}
+
+.register_link a {
+    color: #007bff;
+    text-decoration: none;
+}
