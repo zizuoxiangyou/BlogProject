@@ -12,7 +12,7 @@ import jakarta.persistence.Id;
 public class Blog {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Long postId;
+	private Long blogId;
 
 	private String title;
 
@@ -29,9 +29,7 @@ public class Blog {
 	public Blog() {
 	}
 
-	public Blog(Long postId, String title, String content, String image, Long accountId) {
-		super();
-		this.postId = postId;
+	public Blog(String title, String content, String image, Long accountId) {
 		this.title = title;
 		this.content = content;
 		this.image = image;
@@ -39,12 +37,12 @@ public class Blog {
 	}
 
 //ゲッターとセッター
-	public Long getPostId() {
-		return postId;
+	public Long getBlogId() {
+		return blogId;
 	}
 
-	public void setPostId(Long postId) {
-		this.postId = postId;
+	public void setBlogId(Long blogId) {
+		this.blogId = blogId;
 	}
 
 	public String getTitle() {

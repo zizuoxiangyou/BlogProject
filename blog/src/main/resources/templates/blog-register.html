@@ -13,10 +13,10 @@
         <nav class="navbar">
             <div class="navbar-container">
                 <ul class="nav-list">
-                    <li><a href="#">HOME PAGE</a></li>
-                    <li><a href="#">ログアウト</a></li>
-                    <li><a href="#">CREATE BLOG</a></li>
-                    <li><a href="#">DELETE BLOG</a></li>
+					<li><a th:href="@{/blog/list}">HOME PAGE</a></li>
+					  <li><a th:href="@{/account/logout}">ログアウト</a></li>
+					  <li><a th:href="@{/blog/register}">CREATE BLOG</a></li>
+					  <li><a th:href="@{/blog/delete}">DELETE BLOG</a></li>
                 </ul>
             </div>
         </nav>
@@ -25,7 +25,7 @@
         <div class="main-container">
             <section class="blog-edit">
                 <h2>新規記事追加</h2>
-                <form action="#" method="post" enctype="multipart/form-data">
+                <form th:action="@{/blog/register/process}" method="post" enctype="multipart/form-data">
                     <div class="form-group">
                         <label for="title">タイトル</label>
                         <input type="text" name="title" id="title" value="">

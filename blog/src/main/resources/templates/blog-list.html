@@ -13,10 +13,10 @@
         <nav class="navbar">
             <div class="navbar-container">
                 <ul class="nav-list">
-                    <li><a href="#">HOME PAGE</a></li>
-                    <li><a href="#">ログアウト</a></li>
-                    <li><a href="#">CREATE BLOG</a></li>
-                    <li><a href="#">DELETE BLOG</a></li>
+					<li><a th:href="@{/blog/list}">HOME PAGE</a></li>
+					<li><a th:href="@{/account/logout}">ログアウト</a></li>
+					<li><a th:href="@{/blog/register}">CREATE BLOG</a></li>
+					<li><a th:href="@{/blog/delete}">DELETE BLOG</a></li>
                 </ul>
             </div>
         </nav>
@@ -26,14 +26,16 @@
 
         <h2>BLOG一覧</h2>
         <div class="new-post-button">
-            <a href="#" class="btn btn--orange btn--radius">新規記事追加</a>
+            <a th:href="@{/blog/register}" class="btn btn--orange btn--radius">新規記事追加</a>
         </div>
         <ul class="blog-list">
-            <li class="blogPreview">
-                <a href="#">
-                    <img src="#">
-                    <p class="title">ブログタイトル:</p>
-                    <p class="date">投稿日：</p>
+			<li class="blogPreview" th:each="blog:${blogList}">
+				<a th:href="@{/blog/edit/{blogId}(blogId=${blog.blogId})}">
+					<img th:src="@{/blog-image/{imagePath}(imagePath=${blog.image})}" alt="">
+					<p th:text="${blog.title}"></p><br>
+				</a>
+			</li>
+            <li >
                 </a>
             </li>
 
