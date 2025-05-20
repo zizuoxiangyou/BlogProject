@@ -29,16 +29,16 @@ public class LoginController {
 
     // ログイン処理
     @PostMapping("/account/login/process")
-    public String accountLoginProcess(@RequestParam String email,
+    public String accountLoginProcess(@RequestParam String accountEmail,
                                       @RequestParam String password) {
         // loginCheckメソッドを呼び出してその結果をaccountという変数に格納
-        Account account = accountService.login(email, password).orElse(null);
+        Account account = accountService.login(accountEmail, password).orElse(null);
      // ログイン失敗 → 同じ画面にとどまる
         if (account == null) {
             return "login.html"; 
         } else {
             session.setAttribute("loginAccount", account);
-            return "redirect:/blog_list.html"; 
+            return "redirect:/blog/list"; 
         }
         
     }

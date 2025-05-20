@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <link rel="stylesheet" href="../css/blog-list.css">
+    <link rel="stylesheet" th:href="@{/css/blog-list.css}">
 </head>
 
 <body>
@@ -30,14 +30,11 @@
         </div>
         <ul class="blog-list">
 			<li class="blogPreview" th:each="blog:${blogList}">
-				<a th:href="@{/blog/edit/{blogId}(blogId=${blog.blogId})}">
+				<a th:href="@{/blog/edit/{blogId}(blogId=${blog.id})}">
 					<img th:src="@{/blog-image/{imagePath}(imagePath=${blog.image})}" alt="">
 					<p th:text="${blog.title}"></p><br>
 				</a>
 			</li>
-            <li >
-                </a>
-            </li>
 
         </ul>
 

@@ -12,7 +12,8 @@ import jakarta.persistence.Id;
 public class Blog {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Long blogId;
+	@Column(name = "blog_id")
+	private Long id;
 
 	private String title;
 
@@ -37,12 +38,12 @@ public class Blog {
 	}
 
 //ゲッターとセッター
-	public Long getBlogId() {
-		return blogId;
+	public Long getId() {
+		return id;
 	}
 
-	public void setBlogId(Long blogId) {
-		this.blogId = blogId;
+	public void setId(Long id) {
+		this.id = id;
 	}
 
 	public String getTitle() {

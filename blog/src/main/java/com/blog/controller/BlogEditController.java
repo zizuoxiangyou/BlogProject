@@ -7,6 +7,7 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -19,7 +20,7 @@ import com.blog.entity.Blog;
 import com.blog.services.BlogService;
 
 import jakarta.servlet.http.HttpSession;
-
+@Controller
 public class BlogEditController {
 	@Autowired
     private BlogService blogService;
@@ -42,7 +43,7 @@ public class BlogEditController {
             } else {
                 model.addAttribute("accountName", account.getAccountName());
                 model.addAttribute("blog", blog);
-                return "blog_edit.html";
+                return "blog-edit.html";
             }
         }
     }
@@ -65,7 +66,7 @@ public class BlogEditController {
 
             try {
                 // static/blog-img フォルダに画像保存
-                Files.copy(blogImage.getInputStream(), Path.of("src/main/resources/static/blog-img/" + fileName));
+                Files.copy(blogImage.getInputStream(), Path.of("src/main/resources/static/blog-image/" + fileName));
             } catch (IOException e) {
                 e.printStackTrace();
             }

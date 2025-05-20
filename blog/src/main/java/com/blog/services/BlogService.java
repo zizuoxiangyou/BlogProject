@@ -1,6 +1,7 @@
 package com.blog.services;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -48,12 +49,13 @@ public class BlogService {
     // 編集画面を表示するときのチェック
     // もし、blogId == null  null
     // そうでない場合、
-    // findByBlogIdの情報をコントローラークラスに渡す
+    // findByIdの情報をコントローラークラスに渡す
     public Blog blogEditCheck(Long blogId) {
         if (blogId == null) {
             return null;
         } else {
-            return blogDao.findByBlogId(blogId);
+            Optional<Blog> blogOptional = blogDao.findById(blogId);
+            return blogOptional.orElse(null);
         }
     }
 
@@ -73,27 +75,35 @@ public class BlogService {
         if (blogId == null) {
             return false;
         } else {
-            Blog blog = blogDao.findByBlogId(blogId);
-            blog.setTitle(title);
-            blog.setContent(content);
-            blog.setImage(image);
-            blog.setAccountId(accountId);
-            blogDao.save(blog);
-            return true;
+            Optional<Blog> blogOptional = blogDao.findById(blogId);
+            if (blogOptional.isPresent()) {
+                Blog blog = blogOptional.get();
+                blog.setTitle(title);
+                blog.setContent(content);
+                blog.setImage(image);
+                blog.setAccountId(accountId);
+                blogDao.save(blog);
+                return true;
+            }
+            return false;
         }
     }
 
     // 削除処理のチェック
     // もし、コントローラークラスから受け取ったblogIdがnull
     // false
-    // そうでない場合、deleteByBlogIdを使って削除処理
+    // そうでない場合、deleteByIdを使って削除処理
     // true
     public boolean deleteBlog(Long blogId) {
         if (blogId == null) {
             return false;
         } else {
-            blogDao.deleteByBlogId(blogId);
-            return true;
+            try {
+                blogDao.deleteById(blogId);
+                return true;
+            } catch (Exception e) {
+                return false;
+            }
         }
     }
 }

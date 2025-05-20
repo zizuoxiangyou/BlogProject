@@ -30,7 +30,7 @@ public class BlogCreateController {
     // ブログ登録画面の表示
     @GetMapping("/blog/register")
     public String getBlogRegisterPage(Model model) {
-        Account account = (Account) session.getAttribute("loginAccountInfo");
+        Account account = (Account) session.getAttribute("loginAccount");
 
         if (account == null) {
             return "redirect:/account/login";
@@ -47,7 +47,7 @@ public class BlogCreateController {
             @RequestParam String content,
             @RequestParam MultipartFile image) {
 
-        Account account = (Account) session.getAttribute("loginAccountInfo");
+        Account account = (Account) session.getAttribute("loginAccount");
 
         if (account == null) {
             return "redirect:/account/login";
@@ -58,7 +58,7 @@ public class BlogCreateController {
 
             // 画像ファイルの保存
             try {
-                Files.copy(image.getInputStream(), Path.of("src/main/resources/static/blog-img/" + fileName));
+                Files.copy(image.getInputStream(), Path.of("src/main/resources/static/blog-image/" + fileName));
             } catch (IOException e) {
                 e.printStackTrace();
             }

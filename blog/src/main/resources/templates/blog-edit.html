@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <link rel="stylesheet" href="../css/blog-edit.css">
+    <link rel="stylesheet" th:href="@{/css/blog-edit.css}">
 </head>
 
 <body>
@@ -26,32 +26,33 @@
         <div class="main-container">
             <section class="blog-edit">
                 <h2>記事編集</h2>
-                <form th:action="@{/product/edit/process}" method="post" enctype="multipart/form-data">
+                <form th:action="@{/blog/edit/process}" method="post" enctype="multipart/form-data">
                     <div class="form-group">
                         <label for="title">タイトル</label>
-                        <input type="text" name="title" id="title" th:value="${blog.title}">
-                    </div>
+                        <input type="text" name="blogTitle" id="title" th:value="${blog.title}">
                     </div>
                     <div class="form-group">
                         <label for="image">画像</label>
-                        <input type="file" name="image" id="image">
+                        <input type="file" name="blogImage" id="image">
                     </div>
                     <div class="form-group">
                         <label for="description">詳細</label>
-                        <textarea name="blogDescription" id="description" th:text=${blog.content}></textarea>
+                        <textarea name="blogContent" id="description" th:text=${blog.content}></textarea>
                     </div>
 
-                    <input type="hidden" name="blogId" th:value="${blog.blogId}">
+                    
                     <div class="form-buttons">
+						<input type="hidden" name="blogId" th:value="${blog.id}">
                         <button type="submit" class="btn submit">変更</button>
                         <button type="button" class="btn back" onclick="history.back();">戻る</button>
                     </div>
                 </form>
 
-                <form th:action="@{/blog/delete}" method="post" onsubmit="return confirm('本当に削除しますか？');">
-                    <input type="hidden" name="blogId" th:value="${blog.blogId}">
-                    <button type="submit" class="btn delete">削除</button>
+             <!-- <form th:action="@{/blog/delete/process}" method="post" onsubmit="return confirm('Are you sure you want to delete this blog?');">
+                   <input type="hidden" name="blogId" th:value="${blog.id}">
+                    <button type="submit" class="btn delete">Delete</button>
                 </form>
+				-->
             </section>
         </div>
     </main>
