@@ -1,0 +1,108 @@
+/* 全局样式 */
+body {
+    font-family: 'Helvetica Neue', Arial, sans-serif;
+    line-height: 1.6;
+    color: #333;
+    background-color: #f5f5f5;
+    margin: 0;
+    padding: 0;
+}
+
+.container {
+    max-width: 800px;
+    margin: 40px auto;
+    padding: 30px;
+    background-color: white;
+    border-radius: 10px;
+    box-shadow: 0 2px 15px rgba(0, 0, 0, 0.1);
+}
+
+/* 个人照片样式 */
+.profile-pic {
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+    object-fit: cover;
+    display: block;
+    margin: 0 auto 30px;
+    border: 5px solid #fff;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+/* 标题样式 */
+h1 {
+    text-align: center;
+    color: #2c3e50;
+    margin-bottom: 30px;
+    font-size: 2.5em;
+}
+
+h2 {
+    color: #3498db;
+    border-bottom: 2px solid #3498db;
+    padding-bottom: 10px;
+    margin-top: 40px;
+}
+
+/* 段落样式 */
+p {
+    margin-bottom: 20px;
+    color: #555;
+    font-size: 1.1em;
+}
+
+/* 技能列表样式 */
+ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+li {
+    background-color: #f8f9fa;
+    margin: 10px 0;
+    padding: 12px 20px;
+    border-radius: 5px;
+    border-left: 4px solid #3498db;
+    transition: transform 0.2s;
+}
+
+li:hover {
+    transform: translateX(5px);
+    background-color: #e9ecef;
+}
+
+/* 联系方式样式 */
+.contact {
+    background-color: #f8f9fa;
+    padding: 20px;
+    border-radius: 5px;
+    margin-top: 20px;
+}
+
+.contact a {
+    color: #3498db;
+    text-decoration: none;
+    transition: color 0.2s;
+}
+
+.contact a:hover {
+    color: #2980b9;
+    text-decoration: underline;
+}
+
+/* 响应式设计 */
+@media (max-width: 600px) {
+    .container {
+        margin: 20px;
+        padding: 20px;
+    }
+
+    .profile-pic {
+        width: 150px;
+        height: 150px;
+    }
+
+    h1 {
+        font-size: 2em;
+    }
+} 
