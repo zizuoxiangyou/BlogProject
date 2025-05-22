@@ -20,65 +20,64 @@ import com.blog.entity.Blog;
 import com.blog.services.BlogService;
 
 import jakarta.servlet.http.HttpSession;
+
 @Controller
 public class BlogEditController {
 	@Autowired
-    private BlogService blogService;
+	private BlogService blogService;
 
-    @Autowired
-    private HttpSession session;
+	@Autowired
+	private HttpSession session;
 
-    // 編集画面の表示
-    @GetMapping("/blog/edit/{blogId}")
-    public String getBlogEditPage(@PathVariable Long blogId, Model model) {
-        Account account = (Account) session.getAttribute("loginAccount");
+	// 編集画面の表示
+	@GetMapping("/blog/edit/{blogId}")
+	public String getBlogEditPage(@PathVariable Long blogId, Model model) {
+		Account account = (Account) session.getAttribute("loginAccount");
 
-        if (account == null) {
-            return "redirect:/account/login";
-        } else {
-            Blog blog = blogService.blogEditCheck(blogId);
+		if (account == null) {
+			return "redirect:/account/login";
+		} else {
+			Blog blog = blogService.blogEditCheck(blogId);
 
-            if (blog == null) {
-                return "redirect:/blog/home";
-            } else {
-                model.addAttribute("accountName", account.getAccountName());
-                model.addAttribute("blog", blog);
-                return "blog-edit.html";
-            }
-        }
-    }
+			if (blog == null) {
+				return "redirect:/blog/home";
+			} else {
+				model.addAttribute("accountName", account.getAccountName());
+				model.addAttribute("blog", blog);
+				return "blog-edit.html";
+			}
+		}
+	}
 
-    // 更新処理
-    @PostMapping("/blog/edit/process")
-    public String blogUpdate(@RequestParam String blogTitle,
-                             @RequestParam String blogContent,
-                             @RequestParam MultipartFile blogImage,
-                             @RequestParam Long blogId) {
+	// 更新処理
+	@PostMapping("/blog/edit/process")
+	public String blogUpdate(@RequestParam String blogTitle, @RequestParam String blogContent,
+			@RequestParam MultipartFile blogImage, @RequestParam Long blogId) {
 
-        Account account = (Account) session.getAttribute("loginAccount");
+		Account account = (Account) session.getAttribute("loginAccount");
 
-        if (account == null) {
-            return "redirect:/account/login";
-        } else {
-            // ファイル名を生成
-            String fileName = new SimpleDateFormat("yyyy-MM-dd-HH-mm-ss-").format(new Date())
-                    + blogImage.getOriginalFilename();
+		if (account == null) {
+			return "redirect:/account/login";
+		} else {
+			// ファイル名を生成
+			String fileName = new SimpleDateFormat("yyyy-MM-dd-HH-mm-ss-").format(new Date())
+					+ blogImage.getOriginalFilename();
 
-            try {
-                // static/blog-img フォルダに画像保存
-                Files.copy(blogImage.getInputStream(), Path.of("src/main/resources/static/blog-image/" + fileName));
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
+			try {
+				// static/blog-img フォルダに画像保存
+				Files.copy(blogImage.getInputStream(), Path.of("src/main/resources/static/blog-image/" + fileName));
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
 
-            // 更新処理実行
-            boolean result = blogService.blogUpdate(blogId, blogTitle, blogContent, fileName, account.getAccountId());
+			// 更新処理実行
+			boolean result = blogService.blogUpdate(blogId, blogTitle, blogContent, fileName, account.getAccountId());
 
-            if (result) {
-                return "redirect:/blog/list";
-            } else {
-                return "redirect:/blog/edit/" + blogId;
-            }
-        }
-    }
+			if (result) {
+				return "redirect:/blog/list";
+			} else {
+				return "redirect:/blog/edit/" + blogId;
+			}
+		}
+	}
 }

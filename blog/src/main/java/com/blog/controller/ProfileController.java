@@ -10,24 +10,24 @@ import jakarta.servlet.http.HttpSession;
 
 @Controller
 public class ProfileController {
-    
-    @Autowired
-    private HttpSession session;
 
-    @GetMapping("/profile")
-    public String getProfilePage(Model model) {
-        // セッションからログイン中のユーザー情報を取得
-        Account account = (Account) session.getAttribute("loginAccount");
+	@Autowired
+	private HttpSession session;
 
-        // ログインしていない場合はログイン画面にリダイレクト
-        if (account == null) {
-            return "redirect:/account/login";
-        }
+	@GetMapping("/profile")
+	public String getProfilePage(Model model) {
+		// セッションからログイン中のユーザー情報を取得
+		Account account = (Account) session.getAttribute("loginAccount");
 
-        // モデルにユーザー名を追加
-        model.addAttribute("accountName", account.getAccountName());
-        
-        // プロフィール画面を表示
-        return "profile.html";
-    }
-} 
+		// ログインしていない場合はログイン画面にリダイレクト
+		if (account == null) {
+			return "redirect:/account/login";
+		}
+
+		// モデルにユーザー名を追加
+		model.addAttribute("accountName", account.getAccountName());
+
+		// プロフィール画面を表示
+		return "profile.html";
+	}
+}

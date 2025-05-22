@@ -12,7 +12,7 @@ import jakarta.transaction.Transactional;
 @Repository
 @Transactional
 public interface BlogDao extends JpaRepository<Blog, Long> {
-    // SELECT * FROM blog WHERE title = ?
-    // 用途：ブログの登録チェックに使用
-    Blog findByTitle(String title);
+	// SELECT * FROM blog WHERE title = ?
+	// 用途：ブログの登録チェックに使用
+	Blog findByTitle(String title);
 }

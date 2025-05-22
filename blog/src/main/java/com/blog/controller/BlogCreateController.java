@@ -22,53 +22,51 @@ import jakarta.servlet.http.HttpSession;
 @Controller
 public class BlogCreateController {
 	@Autowired
-    private BlogService blogService;
+	private BlogService blogService;
 
-    @Autowired
-    private HttpSession session;
+	@Autowired
+	private HttpSession session;
 
-    // ブログ登録画面の表示
-    @GetMapping("/blog/register")
-    public String getBlogRegisterPage(Model model) {
-        Account account = (Account) session.getAttribute("loginAccount");
+	// ブログ登録画面の表示
+	@GetMapping("/blog/register")
+	public String getBlogRegisterPage(Model model) {
+		Account account = (Account) session.getAttribute("loginAccount");
 
-        if (account == null) {
-            return "redirect:/account/login";
-        } else {
-            model.addAttribute("accountName", account.getAccountName());
-            return "blog-register.html";
-        }
-    }
+		if (account == null) {
+			return "redirect:/account/login";
+		} else {
+			model.addAttribute("accountName", account.getAccountName());
+			return "blog-register.html";
+		}
+	}
 
-    // ブログの登録処理
-    @PostMapping("/blog/register/process")
-    public String blogRegisterProcess(
-            @RequestParam String title,
-            @RequestParam String content,
-            @RequestParam MultipartFile image) {
+	// ブログの登録処理
+	@PostMapping("/blog/register/process")
+	public String blogRegisterProcess(@RequestParam String title, @RequestParam String content,
+			@RequestParam MultipartFile image) {
 
-        Account account = (Account) session.getAttribute("loginAccount");
+		Account account = (Account) session.getAttribute("loginAccount");
 
-        if (account == null) {
-            return "redirect:/account/login";
-        } else {
-            // 画像のファイル名を作成
-            String fileName = new SimpleDateFormat("yyyy-MM-dd-HH-mm-ss-").format(new Date()) 
-                    + image.getOriginalFilename();
+		if (account == null) {
+			return "redirect:/account/login";
+		} else {
+			// 画像のファイル名を作成
+			String fileName = new SimpleDateFormat("yyyy-MM-dd-HH-mm-ss-").format(new Date())
+					+ image.getOriginalFilename();
 
-            // 画像ファイルの保存
-            try {
-                Files.copy(image.getInputStream(), Path.of("src/main/resources/static/blog-image/" + fileName));
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
+			// 画像ファイルの保存
+			try {
+				Files.copy(image.getInputStream(), Path.of("src/main/resources/static/blog-image/" + fileName));
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
 
-            // ブログの保存処理
-            if (blogService.createBlog(title, content, fileName, account.getAccountId())) {
-                return "redirect:/blog/list";
-            } else {
-                return "blog_register.html";
-            }
-        }
-    }
+			// ブログの保存処理
+			if (blogService.createBlog(title, content, fileName, account.getAccountId())) {
+				return "redirect:/blog/list";
+			} else {
+				return "blog_register.html";
+			}
+		}
+	}
 }

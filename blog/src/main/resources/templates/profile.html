@@ -1,33 +1,48 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>CHEN WEI - PROFILE</title>
-    <link rel="stylesheet" th:href="@{/css/profile.css}">
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>CHEN WEI - PROFILE</title>
+	<link rel="stylesheet" th:href="@{/css/profile.css}">
 </head>
+
 <body>
-    <div class="container">
-    <img th:src="@{/image/dog.jpg}" alt="プロフィール写真" class="profile-pic">
-    <h1>こんにちは、CHEN WEIです！</h1>
-    <p>趣味はゲームと旅行で、特に新しい場所を探索するのが大好きです。動物の中では犬とうさぎが特に可愛くて癒されます。現在はIT技術の勉強に力を入れており、プログラミングやネットワークについて日々学んでいます。まだまだ初心者ですが、頑張ってスキルを磨いていきたいと思います。</p>
+	<header>
+		<nav class="navbar">
+			<div class="navbar-container">
+				<ul class="nav-list">
+					<li><a th:href="@{/blog/list}">HOME PAGE</a></li>
+					<li><a th:href="@{/account/logout}">ログアウト</a></li>
+				</ul>
+			</div>
+		</nav>
+	</header>
+	<div class="container">
+		<img th:src="@{/image/dog.jpg}" alt="プロフィール写真" class="profile-pic">
+		<h1>こんにちは、CHEN WEIです！</h1>
+		<p>趣味はゲームと旅行で、特に新しい場所を探索するのが大好きです。動物の中では犬とうさぎが特に可愛くて癒されます。現在はIT技術の勉強に力を入れており、プログラミングやネットワークについて日々学んでいます。まだまだ初心者ですが、頑張ってスキルを磨いていきたいと思います。
+		</p>
 
-    <h2>スキル</h2>
-    <ul>
-      <li>Java / Spring Boot</li>
-      <li>HTML / CSS / JavaScript</li>
-      <li>Thymeleaf</li>
-      <li>MySQL / PostgreSQL</li>
-      <li>Git / VSCode / IntelliJ</li>
-    </ul>
+		<h2>スキル</h2>
+		<ul>
+			<li>Java / Spring Boot</li>
+			<li>HTML / CSS / JavaScript</li>
+			<li>Thymeleaf</li>
+			<li>MySQL / PostgreSQL</li>
+			<li>Git / VSCode / IntelliJ</li>
+		</ul>
 
-    <h2>今やっていること</h2>
-    <p>Oracle APEX・Spring Securityの学習など。</p>
+		<h2>今やっていること</h2>
+		<p>Oracle APEX・Spring Securityの学習など。</p>
 
-    <h2>連絡先</h2>
-    <p class="contact">
-      メール: <a href="mailto:zizuoxiangyou@gmail.com">zizuoxiangyou@gmail.com</a><br>
-      GitHub: <a href="https://github.com/zizuoxiangyou" target="_blank">github.com/zizuoxiangyou</a><br>
-    </p>
+		<h2>連絡先</h2>
+		<p class="contact">
+			メール: <a href="mailto:zizuoxiangyou@gmail.com">zizuoxiangyou@gmail.com</a><br>
+			GitHub: <a href="https://github.com/zizuoxiangyou" target="_blank">github.com/zizuoxiangyou</a><br>
+		</p>
+	</div>
 </body>
+
 </html>

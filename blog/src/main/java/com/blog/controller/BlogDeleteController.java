@@ -16,37 +16,37 @@ import jakarta.servlet.http.HttpSession;
 @Controller
 public class BlogDeleteController {
 	@Autowired
-    private HttpSession session;
+	private HttpSession session;
 
-    @Autowired
-    private BlogService blogService;
+	@Autowired
+	private BlogService blogService;
 
-  
-    @GetMapping("/blog/delete")
-    public String getDeletePage(Model model) {
-        Account account = (Account) session.getAttribute("loginAccount");
-        
-        if (account == null) {
-            return "redirect:/account/login";
-        }
-        
-        model.addAttribute("blogList", blogService.selectAllBlogList(account.getAccountId()));
-        return "blog-delete.html";
-    }
+	// 削除画面処理
+	@GetMapping("/blog/delete")
+	public String getDeletePage(Model model) {
+		Account account = (Account) session.getAttribute("loginAccount");
 
- // セッションからログインしている人の情報をaccountという変数に格納
-    @PostMapping("/blog/delete/process")
-    public String deleteBlog(@RequestParam Long blogId) {
-        Account account = (Account) session.getAttribute("loginAccount");
-     // もしaccount==null ログイン画面にリダイレクトする
-        if (account == null) {
-            return "redirect:/account/login";
-        }
-        
-        if (blogService.deleteBlog(blogId)) {
-            return "redirect:/blog/list";
-        } else {
-            return "redirect:/blog/delete";
-        }
-    }
+		if (account == null) {
+			return "redirect:/account/login";
+		}
+
+		model.addAttribute("blogList", blogService.selectAllBlogList(account.getAccountId()));
+		return "blog-delete.html";
+	}
+
+	// セッションからログインしている人の情報をaccountという変数に格納
+	@PostMapping("/blog/delete/process")
+	public String deleteBlog(@RequestParam Long blogId) {
+		Account account = (Account) session.getAttribute("loginAccount");
+		// もしaccount==null ログイン画面にリダイレクトする
+		if (account == null) {
+			return "redirect:/account/login";
+		}
+
+		if (blogService.deleteBlog(blogId)) {
+			return "redirect:/blog/list";
+		} else {
+			return "redirect:/blog/delete";
+		}
+	}
 }

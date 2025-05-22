@@ -10,27 +10,25 @@ import com.blog.services.AccountService;
 
 @Controller
 public class RegisterController {
-	 @Autowired
-	    private AccountService accountService;
+	@Autowired
+	private AccountService accountService;
 
-	    // 登録画面の表示（GETリクエスト）
-	    @GetMapping("/account/register")
-	    public String getAccountRegisterPage() {
-	        return "register.html"; 
-	    }
+	// 登録画面の表示（GETリクエスト）
+	@GetMapping("/account/register")
+	public String getAccountRegisterPage() {
+		return "register.html";
+	}
 
-	    // 登録処理
-	    @PostMapping("/account/register/process")
-	    public String accountRegisterProcess(
-	            @RequestParam String accountName,
-	            @RequestParam String accountEmail,
-	            @RequestParam String password) {
+	// 登録処理
+	@PostMapping("/account/register/process")
+	public String accountRegisterProcess(@RequestParam String accountName, @RequestParam String accountEmail,
+			@RequestParam String password) {
 
-	        // アカウントが新規作成できたらログイン画面へ
-	        if (accountService.createAccount(accountName, accountEmail, password)) {
-	            return "login.html";
-	        } else {
-	            return "register.html"; 
-	        }
-	    }
+		// アカウントが新規作成できたらログイン画面へ
+		if (accountService.createAccount(accountName, accountEmail, password)) {
+			return "login.html";
+		} else {
+			return "register.html";
+		}
+	}
 }

@@ -2,22 +2,22 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Document</title>
 	<link rel="stylesheet" th:href="@{/css/register.css}">
 </head>
 
 <body>
-    <div class="whole_page">
-        <h2>REGISTER</h2>
-        <form th:action="@{/account/register/process}" method="post">
-            <input type="text" name="accountName" id="username" class="form_input" placeholder="username" required>
-            <input type="email" name="accountEmail" id="email" class="form_input" placeholder="email" required>
-            <input type="password" name="password" id="password" class="form_input" placeholder="password" required>
-            <button type="submit">Register</button>
-        </form>
-    </div>
+	<div class="whole_page">
+		<h2>REGISTER</h2>
+		<form th:action="@{/account/register/process}" method="post">
+			<input type="text" name="accountName" id="username" class="form_input" placeholder="username" required>
+			<input type="email" name="accountEmail" id="email" class="form_input" placeholder="email" required>
+			<input type="password" name="password" id="password" class="form_input" placeholder="password" required>
+			<button type="submit">Register</button>
+		</form>
+	</div>
 
 </body>
 
