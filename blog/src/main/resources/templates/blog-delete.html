@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Delete Blog</title>
+	<link rel="stylesheet" th:href="@{/css/blog-delete.css}">
+</head>
+
+<body>
+	<header>
+		<nav class="navbar">
+			<div class="navbar-container">
+				<ul class="nav-list">
+					<li><a th:href="@{/blog/list}">HOME PAGE</a></li>
+					<li><a th:href="@{/account/logout}">ログアウト</a></li>
+					<li><a th:href="@{/blog/register}">CREATE BLOG</a></li>
+					<li><a th:href="@{/blog/delete}">DELETE BLOG</a></li>
+					<li><a th:href="@{/profile}">PROFILE</a></li>
+				</ul>
+			</div>
+		</nav>
+	</header>
+
+	<main>
+		<div class="main-container">
+			<section class="blog-edit">
+				<h2>Delete Blog</h2>
+				<div class="blog-list">
+					<div th:each="blog : ${blogList}" class="blog-item delete-card">
+						<h3 th:text="${blog.title}"></h3>
+						<form th:action="@{/blog/delete/process}" method="post"
+							onsubmit="return confirm('Are you sure you want to delete this blog?');">
+							<input type="hidden" name="blogId" th:value="${blog.id}">
+							<button type="submit" class="btn delete">Delete</button>
+						</form>
+					</div>
+				</div>
+			</section>
+		</div>
+	</main>
+</body>
+
+</html>

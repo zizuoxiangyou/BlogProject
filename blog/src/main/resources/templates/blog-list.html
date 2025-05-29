@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" th:href="@{/css/blog-list.css}">
+</head>
+
+<body>
+    <header>
+        <nav class="navbar">
+            <div class="navbar-container">
+                <ul class="nav-list">
+					<li><a th:href="@{/blog/list}">HOME PAGE</a></li>
+					<li><a th:href="@{/account/logout}">ログアウト</a></li>
+					<li><a th:href="@{/blog/register}">CREATE BLOG</a></li>
+					<li><a th:href="@{/blog/delete}">DELETE BLOG</a></li>
+					<li><a th:href="@{/profile}">PROFILE</a></li>
+                </ul>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+
+        <h2>BLOG一覧</h2>
+        <div class="new-post-button">
+            <a th:href="@{/blog/register}" class="btn btn--orange btn--radius">新規記事追加</a>
+        </div>
+        <ul class="blog-list">
+			<li class="blogPreview" th:each="blog:${blogList}">
+				<a th:href="@{/blog/edit/{blogId}(blogId=${blog.id})}">
+					<img th:src="@{/blog-image/{imagePath}(imagePath=${blog.image})}" alt="">
+					<p th:text="${blog.title}"></p><br>
+				</a>
+			</li>
+
+        </ul>
+
+    </main>
+</body>
+
+</html>
