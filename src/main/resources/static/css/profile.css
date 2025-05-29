@@ -1,0 +1,128 @@
+
+header {
+    background-color: #222;
+    padding: 10px 0;
+}
+
+.navbar-container {
+    max-width: 1000px;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0 20px;
+}
+
+.nav-list {
+    list-style: none;
+    display: flex;
+    gap: 20px;
+}
+
+.nav-list li a {
+    color: black;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.nav-list li a:hover {
+    text-decoration: underline;
+}
+
+.container {
+    max-width: 800px;
+    margin: 40px auto;
+    padding: 30px;
+    background-color: white;
+    border-radius: 10px;
+    box-shadow: 0 2px 15px rgba(0, 0, 0, 0.1);
+	line-height: 1.6;
+	color: #333;
+}
+
+
+.profile-pic {
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+    object-fit: cover;
+    display: block;
+    margin: 0 auto 30px;
+    border: 5px solid #fff;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+h1 {
+    text-align: center;
+    color: #2c3e50;
+    margin-bottom: 30px;
+    font-size: 2.5em;
+}
+
+h2 {
+    color: black;
+    border-bottom: 2px solid black;
+    padding-bottom: 10px;
+    margin-top: 40px;
+}
+
+p {
+    margin-bottom: 20px;
+    color: #555;
+    font-size: 1.1em;
+}
+
+ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+li {
+    background-color: #f8f9fa;
+    margin: 10px 0;
+    padding: 12px 20px;
+    border-radius: 5px;
+    border-left: 4px solid black;
+    transition: transform 0.2s;
+}
+
+li:hover {
+    transform: translateX(5px);
+    background-color: #e9ecef;
+}
+
+
+.contact {
+    background-color: #f8f9fa;
+    padding: 20px;
+    border-radius: 5px;
+    margin-top: 20px;
+}
+
+.contact a {
+    color: black;
+    text-decoration: none;
+    transition: color 0.2s;
+}
+
+.contact a:hover {
+    color: #2980b9;
+    text-decoration: underline;
+}
+
+
+@media (max-width: 600px) {
+    .container {
+        margin: 20px;
+        padding: 20px;
+    }
+
+    .profile-pic {
+        width: 150px;
+        height: 150px;
+    }
+
+    h1 {
+        font-size: 2em;
+    }
+} 
